@@ -18,6 +18,23 @@ const COLLAPSED_COUNT = 4
 export default function ListSection({ title, rows }: Props) {
   const collapsible = rows.length > COLLAPSED_COUNT
   const [expanded, setExpanded] = useState(false)
+  // While collapsing the extra rows stay mounted so they can fade out before
+  // being removed.
+  const [collapsing, setCollapsing] = useState(false)
+
+  const toggle = () => {
+    if (collapsing) return
+    if (expanded) {
+      setCollapsing(true)
+      window.setTimeout(() => {
+        setExpanded(false)
+        setCollapsing(false)
+      }, 300)
+    } else {
+      setExpanded(true)
+    }
+  }
+
   const visibleRows = collapsible && !expanded ? rows.slice(0, COLLAPSED_COUNT) : rows
 
   return (
@@ -31,8 +48,15 @@ export default function ListSection({ title, rows }: Props) {
             return (
               <li
                 key={`${row.title}-${i}`}
-                className={['flex flex-col gap-8', revealed ? 'animate-fade-in' : ''].join(' ')}
-                style={revealed ? { animationDelay: `${(i - COLLAPSED_COUNT) * 60}ms` } : undefined}
+                className={[
+                  'flex flex-col gap-8',
+                  revealed ? (collapsing ? 'animate-fade-out' : 'animate-fade-in') : '',
+                ].join(' ')}
+                style={
+                  revealed && !collapsing
+                    ? { animationDelay: `${(i - COLLAPSED_COUNT) * 60}ms` }
+                    : undefined
+                }
               >
                 {i > 0 && <div className="h-px w-full bg-line" />}
                 <div className="group flex items-center justify-between gap-6">
@@ -67,10 +91,10 @@ export default function ListSection({ title, rows }: Props) {
         {collapsible && (
           <button
             type="button"
-            onClick={() => setExpanded((v) => !v)}
+            onClick={toggle}
             className="self-start text-[14px] leading-[16px] text-fg opacity-40 underline underline-offset-2 transition-opacity hover:opacity-100 2xl:text-[16px] 2xl:leading-[24px]"
           >
-            {expanded ? 'See less' : 'See more'}
+            {expanded && !collapsing ? 'See less' : 'See more'}
           </button>
         )}
       </div>
