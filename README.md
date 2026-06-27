@@ -1,7 +1,6 @@
 # ntmedina.com
 
-Portfolio home of Natália Medina — Senior Product Designer & Design Engineer.
-Built from the [Figma 2026 portfolio design](https://www.figma.com/design/uf4OtCYPQrtUd1Om1BH7Yh/Nat%C3%A1lia-Medina-%7C-Portf%C3%B3lio-2026).
+Portfolio of Natália Medina — Senior Product Designer & Design Engineer.
 
 ## Stack
 
