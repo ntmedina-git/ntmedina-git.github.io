@@ -16,11 +16,15 @@ export default function SelectedWork() {
             <img src={item.logo} alt={item.logoAlt} className={item.logoClass} />
 
             <div className="flex flex-col gap-1 text-fg">
-              <h3 className="text-[20px] leading-[28px] opacity-60 xl:text-[24px] xl:leading-[32px]">
+              <h3 className="text-[16px] leading-normal opacity-90 2xl:text-[24px] 2xl:leading-[32px] 2xl:opacity-60">
                 {item.title}
               </h3>
-              <p className="text-[16px] leading-[24px] opacity-40">{item.company}</p>
-              <p className="text-[16px] leading-[24px] opacity-40">{item.note}</p>
+              <p className="text-[14px] leading-[24px] opacity-60 2xl:text-[16px] 2xl:opacity-40">
+                {item.company}
+              </p>
+              <p className="text-[14px] leading-[24px] opacity-60 2xl:text-[16px] 2xl:opacity-40">
+                {item.note}
+              </p>
             </div>
           </article>
         ))}
