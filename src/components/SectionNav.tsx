@@ -25,7 +25,10 @@ export default function SectionNav({ active, onSelect }: Props) {
             type="button"
             onClick={() => onSelect(section.id)}
             aria-current={isActive ? 'true' : undefined}
-            className="group flex items-center gap-3 outline-none"
+            // Height is the dash itself (2px) so the 32px nav gap matches the
+            // design exactly (34px centre-to-centre). The ::before gives a
+            // comfortable click target without affecting that spacing.
+            className="group relative flex items-center outline-none before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']"
           >
             <span
               className={[
@@ -35,8 +38,9 @@ export default function SectionNav({ active, onSelect }: Props) {
                   : 'w-3 bg-fg-30 group-hover:bg-fg-60',
               ].join(' ')}
             />
-            {/* Label is never shown on its own — only revealed in grey on hover. */}
-            <span className="text-[14px] leading-[18px] text-fg-40 opacity-0 -translate-x-1 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+            {/* Label is never shown on its own — only revealed in grey on hover.
+                Absolutely positioned so it never inflates the dash spacing. */}
+            <span className="absolute left-9 top-1/2 -translate-x-1 -translate-y-1/2 whitespace-nowrap text-[14px] leading-[18px] text-fg-40 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
               {section.label}
             </span>
           </button>
