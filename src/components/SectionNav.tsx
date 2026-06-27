@@ -35,14 +35,8 @@ export default function SectionNav({ active, onSelect }: Props) {
                   : 'w-3 bg-fg-30 group-hover:bg-fg-60',
               ].join(' ')}
             />
-            <span
-              className={[
-                'text-[14px] leading-[18px] transition-all duration-500',
-                isActive
-                  ? 'text-fg-60 opacity-100'
-                  : 'text-fg-40 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0',
-              ].join(' ')}
-            >
+            {/* Label is never shown on its own — only revealed in grey on hover. */}
+            <span className="text-[14px] leading-[18px] text-fg-40 opacity-0 -translate-x-1 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
               {section.label}
             </span>
           </button>
