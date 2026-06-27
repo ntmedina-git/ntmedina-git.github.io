@@ -17,9 +17,7 @@ export default function Hero() {
         <span className="text-fg">{hero.name}</span>
         <br />
         <span className="text-fg-60">{hero.line2a}</span>
-        <span className="text-fg-60 underline decoration-from-font underline-offset-4">
-          {hero.underline}
-        </span>
+        <span className="text-fg-60">{hero.underline}</span>
         <span className="text-fg-60">{hero.line2b}</span>
       </h1>
 
