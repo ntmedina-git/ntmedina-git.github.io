@@ -9,8 +9,9 @@ type Props = {
 
 /**
  * Top navigation used on M / S (below lg). A scroll-aware bar with the identity
- * on the left and a burger on the right. Tapping the burger opens a full-screen
- * black overlay with the section links (Work / About) centered on screen.
+ * on the left and a burger on the right. Tapping the burger fades in a
+ * full-screen black overlay with the section links (Work / About) centered on
+ * screen; the links rise and fade in with a small stagger.
  */
 export default function TopBar({ onSelect }: Props) {
   const [open, setOpen] = useState(false)
@@ -32,59 +33,68 @@ export default function TopBar({ onSelect }: Props) {
   }
 
   return (
-    <header
-      // Closed: a sticky bar that tracks the scroll 1:1 (slides away on the way
-      // down, returns on the way up). Open: a full-screen black overlay.
-      style={open ? undefined : { transform: `translateY(-${offset}px)` }}
-      className={[
-        'lg:hidden',
-        open
-          ? 'fixed inset-0 z-50 flex flex-col bg-bg'
-          : 'sticky top-0 z-30 bg-bg/80 backdrop-blur-sm transition-colors',
-      ].join(' ')}
-    >
-      <div ref={ref} className="flex items-start justify-between p-8 md:p-10">
-        <Identity />
+    <div className="lg:hidden">
+      {/* Bar — always visible, stacked above the overlay. Tracks the scroll 1:1
+          (slides away on the way down, returns on the way up). */}
+      <header
+        style={{ transform: `translateY(-${open ? 0 : offset}px)` }}
+        className={[
+          'top-0 z-50 bg-bg/80 backdrop-blur-sm',
+          // Pinned while the menu is open so the close button stays on screen
+          // even if the page was scrolled; scroll-aware sticky bar otherwise.
+          open ? 'fixed inset-x-0' : 'sticky',
+        ].join(' ')}
+      >
+        <div ref={ref} className="flex items-start justify-between p-8 md:p-10">
+          <Identity />
 
-        <button
-          type="button"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="relative mt-1 h-8 w-8 shrink-0"
-        >
-          <span
-            className={[
-              'absolute left-1 h-0.5 w-6 bg-fg transition-all duration-300',
-              open ? 'top-[15px] rotate-45' : 'top-[10px]',
-            ].join(' ')}
-          />
-          <span
-            className={[
-              'absolute h-0.5 bg-fg transition-all duration-300',
-              open ? 'left-1 top-[15px] w-6 -rotate-45 opacity-100' : 'left-3 top-5 w-4 opacity-50',
-            ].join(' ')}
-          />
-        </button>
-      </div>
+          <button
+            type="button"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="relative mt-1 h-8 w-8 shrink-0"
+          >
+            <span
+              className={[
+                'absolute left-1 h-0.5 w-6 bg-fg transition-all duration-300',
+                open ? 'top-[15px] rotate-45' : 'top-[10px]',
+              ].join(' ')}
+            />
+            <span
+              className={[
+                'absolute h-0.5 bg-fg transition-all duration-300',
+                open ? 'left-1 top-[15px] w-6 -rotate-45 opacity-100' : 'left-3 top-5 w-4 opacity-50',
+              ].join(' ')}
+            />
+          </button>
+        </div>
+      </header>
 
-      {open && (
-        // Absolutely centred on the full viewport (not just below the bar).
-        // pointer-events-none lets taps reach the close button; the links opt
-        // back in with pointer-events-auto.
-        <nav className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4">
-          {menuSections.map((s) => (
+      {/* Full-screen menu — fades in/out */}
+      <div
+        className={[
+          'fixed inset-0 z-40 bg-bg transition-[opacity,visibility] duration-300 ease-out',
+          open ? 'visible opacity-100' : 'invisible opacity-0',
+        ].join(' ')}
+      >
+        <nav className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+          {menuSections.map((s, i) => (
             <button
               key={s.id}
               type="button"
               onClick={() => go(s.id)}
-              className="pointer-events-auto text-[32px] leading-[40px] text-fg-80 transition-colors hover:text-fg"
+              style={{ transitionDelay: open ? `${120 + i * 70}ms` : '0ms' }}
+              className={[
+                'text-[32px] leading-[40px] text-fg-80 transition-all duration-300 ease-out hover:text-fg',
+                open ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0',
+              ].join(' ')}
             >
               {s.label}
             </button>
           ))}
         </nav>
-      )}
-    </header>
+      </div>
+    </div>
   )
 }
