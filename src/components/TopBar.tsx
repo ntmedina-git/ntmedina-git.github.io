@@ -14,7 +14,7 @@ type Props = {
  */
 export default function TopBar({ onSelect }: Props) {
   const [open, setOpen] = useState(false)
-  const { ref, offset } = useScrollAwayHeader<HTMLDivElement>()
+  const { ref, offset, animate } = useScrollAwayHeader<HTMLDivElement>()
 
   // Lock body scroll while the full-screen menu is open.
   useEffect(() => {
@@ -39,6 +39,9 @@ export default function TopBar({ onSelect }: Props) {
         style={{ transform: `translateY(-${open ? 0 : offset}px)` }}
         className={[
           'top-0 z-50 bg-bg/80 backdrop-blur-sm',
+          // Smooth only when revealing on scroll-up; no transition while it
+          // tracks the scroll on the way down.
+          animate && !open ? 'transition-transform duration-300 ease-out' : '',
           // Pinned while the menu is open so the close button stays on screen
           // even if the page was scrolled; scroll-aware sticky bar otherwise.
           open ? 'fixed inset-x-0' : 'sticky',
