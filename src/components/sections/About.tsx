@@ -1,12 +1,16 @@
 import { about } from '../../data/content'
 import SectionHeading from './SectionHeading'
 
-/** About — heading + single paragraph. Anchor for the third nav indicator. */
+/**
+ * About — heading + single paragraph. Anchor for the third nav indicator.
+ * Matches the Figma frames: 16/24 (S) · 20/32 (M/L) · 32/52 (XL),
+ * max-width S 330 · M 438 · L 533 · XL 858.
+ */
 export default function About() {
   return (
-    <section id="about" className="flex flex-col gap-8 xl:gap-12">
+    <section id="about" className="flex flex-col gap-6 md:gap-10 lg:gap-12 2xl:gap-16">
       <SectionHeading>About</SectionHeading>
-      <p className="max-w-[868px] text-fg opacity-50 text-[18px] leading-[30px] md:text-[20px] md:leading-[32px]">
+      <p className="max-w-[330px] text-fg opacity-60 text-[16px] leading-[24px] md:max-w-[438px] md:text-[20px] md:leading-[32px] lg:max-w-[533px] 2xl:max-w-[858px] 2xl:text-[32px] 2xl:leading-[52px]">
         {about}
       </p>
     </section>

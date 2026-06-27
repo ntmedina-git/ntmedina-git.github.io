@@ -7,7 +7,7 @@ type Props = {
 export default function SectionHeading({ children, pill }: Props) {
   return (
     <div className="flex items-center gap-6">
-      <h2 className="font-medium text-[24px] leading-[32px] text-fg-60 md:text-[28px] xl:text-[32px] xl:leading-[52px]">
+      <h2 className="font-medium text-[20px] leading-[32px] text-fg-60 2xl:text-[32px] 2xl:leading-[52px]">
         {children}
       </h2>
       {pill && (
