@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Identity from './Identity'
 import { useScrollAwayHeader } from '../hooks/useScrollAwayHeader'
 import { menuSections, type NavSectionId } from '../data/content'
@@ -8,13 +8,23 @@ type Props = {
 }
 
 /**
- * Top navigation used on M / S (below lg). The identity block on the left, a
- * burger on the right built from the same two-dash motif as the sidebar
- * indicator (24px + 16px). Tapping it reveals sections and social links.
+ * Top navigation used on M / S (below lg). A scroll-aware bar with the identity
+ * on the left and a burger on the right. Tapping the burger opens a full-screen
+ * black overlay with the section links (Work / About) centered on screen.
  */
 export default function TopBar({ onSelect }: Props) {
   const [open, setOpen] = useState(false)
   const { ref, offset } = useScrollAwayHeader<HTMLDivElement>()
+
+  // Lock body scroll while the full-screen menu is open.
+  useEffect(() => {
+    if (!open) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [open])
 
   const go = (id: NavSectionId) => {
     setOpen(false)
@@ -23,13 +33,14 @@ export default function TopBar({ onSelect }: Props) {
 
   return (
     <header
-      // Track the scroll 1:1: the bar slides up with the page on the way down
-      // and back down on the way up. Kept fully visible while the menu is open.
-      // No transform transition so it follows the scroll rather than lagging.
-      style={{ transform: `translateY(-${open ? 0 : offset}px)` }}
+      // Closed: a sticky bar that tracks the scroll 1:1 (slides away on the way
+      // down, returns on the way up). Open: a full-screen black overlay.
+      style={open ? undefined : { transform: `translateY(-${offset}px)` }}
       className={[
-        'lg:hidden sticky top-0 z-30 transition-colors',
-        open ? 'bg-bg' : 'bg-bg/80 backdrop-blur-sm',
+        'lg:hidden',
+        open
+          ? 'fixed inset-0 z-50 flex flex-col bg-bg'
+          : 'sticky top-0 z-30 bg-bg/80 backdrop-blur-sm transition-colors',
       ].join(' ')}
     >
       <div ref={ref} className="flex items-start justify-between p-8 md:p-10">
@@ -58,20 +69,21 @@ export default function TopBar({ onSelect }: Props) {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-bg px-8 pb-8 pt-6 md:px-10">
-          <nav className="flex flex-col gap-3">
-            {menuSections.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => go(s.id)}
-                className="text-left text-[20px] leading-[28px] text-fg-80 transition-colors hover:text-fg"
-              >
-                {s.label}
-              </button>
-            ))}
-          </nav>
-        </div>
+        // Absolutely centred on the full viewport (not just below the bar).
+        // pointer-events-none lets taps reach the close button; the links opt
+        // back in with pointer-events-auto.
+        <nav className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4">
+          {menuSections.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => go(s.id)}
+              className="pointer-events-auto text-[32px] leading-[40px] text-fg-80 transition-colors hover:text-fg"
+            >
+              {s.label}
+            </button>
+          ))}
+        </nav>
       )}
     </header>
   )
