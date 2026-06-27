@@ -40,22 +40,6 @@ export const intro = [
 
 export const selectedWork = [
   {
-    logo: '/assets/itau.svg',
-    logoAlt: 'Íon | Itaú',
-    logoClass: 'h-8 w-[39px]',
-    title: 'Íon | Itaú Investimentos',
-    company: 'Work & Co, 2020/2021',
-    note: '0 > 1',
-  },
-  {
-    logo: '/assets/dotz.svg',
-    logoAlt: 'Dotz',
-    logoClass: 'h-[18px] w-[56px]',
-    title: 'Conta Digital Dotz',
-    company: 'Work & Co, 2021',
-    note: '0 > 1',
-  },
-  {
     logo: '/assets/arco.svg',
     logoAlt: 'Arco Educação',
     logoClass: 'h-8 w-[58px]',
@@ -69,6 +53,22 @@ export const selectedWork = [
     logoClass: 'h-12 w-[197px]',
     title: 'Inteligent assistant',
     company: 'Arco Educação & Open AI, 2024',
+    note: '0 > 1',
+  },
+  {
+    logo: '/assets/itau.svg',
+    logoAlt: 'Íon | Itaú',
+    logoClass: 'h-8 w-[39px]',
+    title: 'Íon | Itaú Investimentos',
+    company: 'Work & Co, 2020/2021',
+    note: '0 > 1',
+  },
+  {
+    logo: '/assets/dotz.svg',
+    logoAlt: 'Dotz',
+    logoClass: 'h-[18px] w-[56px]',
+    title: 'Conta Digital Dotz',
+    company: 'Work & Co, 2021',
     note: '0 > 1',
   },
 ]
