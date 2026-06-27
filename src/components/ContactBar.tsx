@@ -25,12 +25,7 @@ export default function ContactBar() {
               </a>
             ))}
           </div>
-          <a
-            href={email.href}
-            className="text-fg-40 transition-colors hover:text-fg"
-          >
-            {email.label}
-          </a>
+          <span className="text-fg-40">{email.label}</span>
         </div>
       </div>
     </div>

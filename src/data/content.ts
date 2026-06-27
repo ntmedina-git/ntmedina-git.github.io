@@ -5,10 +5,12 @@ export const identity = {
   roles: ['Senior Product Designer', 'Design Engineer'],
 }
 
-export const social = [
+export type SocialLink = { label: string; href?: string }
+
+export const social: SocialLink[] = [
   { label: 'Linkedin', href: 'https://www.linkedin.com/in/ntmedina/' },
   { label: 'Github', href: 'https://github.com/ntmedina-git' },
-  { label: 'hello@ntmedina.com', href: 'mailto:hello@ntmedina.com' },
+  { label: 'hello@ntmedina.com' }, // plain text — no mailto link
 ]
 
 // The three scroll-driven nav indicators (XL / L sidebar).
