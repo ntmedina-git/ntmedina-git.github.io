@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Identity from './Identity'
-import { useHideOnScroll } from '../hooks/useHideOnScroll'
+import { useScrollAwayHeader } from '../hooks/useScrollAwayHeader'
 import { menuSections, type NavSectionId } from '../data/content'
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
  */
 export default function TopBar({ onSelect }: Props) {
   const [open, setOpen] = useState(false)
-  const hidden = useHideOnScroll()
+  const { ref, offset } = useScrollAwayHeader<HTMLDivElement>()
 
   const go = (id: NavSectionId) => {
     setOpen(false)
@@ -23,15 +23,16 @@ export default function TopBar({ onSelect }: Props) {
 
   return (
     <header
+      // Track the scroll 1:1: the bar slides up with the page on the way down
+      // and back down on the way up. Kept fully visible while the menu is open.
+      // No transform transition so it follows the scroll rather than lagging.
+      style={{ transform: `translateY(-${open ? 0 : offset}px)` }}
       className={[
-        'lg:hidden sticky top-0 z-30 transition-[transform,background-color] duration-300',
+        'lg:hidden sticky top-0 z-30 transition-colors',
         open ? 'bg-bg' : 'bg-bg/80 backdrop-blur-sm',
-        // Slide out of the way when scrolling down; reappear on scroll up.
-        // Never hide while the menu is open.
-        hidden && !open ? '-translate-y-full' : 'translate-y-0',
       ].join(' ')}
     >
-      <div className="flex items-start justify-between p-8 md:p-10">
+      <div ref={ref} className="flex items-start justify-between p-8 md:p-10">
         <Identity />
 
         <button
