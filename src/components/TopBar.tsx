@@ -45,8 +45,17 @@ export default function TopBar({ onSelect }: Props) {
           open ? 'fixed inset-x-0' : 'sticky',
         ].join(' ')}
       >
-        <div ref={ref} className="flex items-start justify-between p-8 md:p-10">
-          <Identity />
+        <div ref={ref} className="relative flex items-start justify-end p-8 md:p-10">
+          {/* Identity is revealed only inside the open menu. */}
+          <div
+            aria-hidden={!open}
+            className={[
+              'absolute left-8 top-8 transition-opacity duration-500 ease-out md:left-10 md:top-10',
+              open ? 'opacity-100' : 'pointer-events-none opacity-0',
+            ].join(' ')}
+          >
+            <Identity />
+          </div>
 
           <button
             type="button"
