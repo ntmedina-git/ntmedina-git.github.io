@@ -77,7 +77,7 @@ export const selectedWork = [
 
 export const about = [
   'I started my career as an undergraduate researcher and have since spent the past decade helping companies design, launch, and scale digital products across different industries and contexts.',
-  "Along the way, I've had the opportunity to collaborate with organizations and clients including Globo.com, VTEX, Work & Co, Itaú, Goldman Sachs, Dotz, Dafiti, GoFundMe, Steinway & Sons, TaDa | Zé Delivery, Arco Educação and Mercado Livre.",
+  "Along the way, I've had the opportunity to collaborate with organizations and clients including Globo.com, VTEX, Work & Co, Itaú, Goldman Sachs, Dotz, Dafiti, GoFundMe, Steinway & Sons, TaDa | Zé Delivery and Arco Educação.",
 ]
 
 export type ListRow = { title: string; subtitle: string; meta: string; href?: string }
