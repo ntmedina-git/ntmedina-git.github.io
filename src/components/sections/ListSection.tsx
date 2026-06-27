@@ -17,7 +17,7 @@ export default function ListSection({ title, rows }: Props) {
         {rows.map((row, i) => (
           <li key={`${row.title}-${i}`} className="flex flex-col gap-8">
             {i > 0 && <div className="h-px w-full bg-line" />}
-            <div className="group flex items-start justify-between gap-6">
+            <div className="group flex items-center justify-between gap-6">
               <div className="flex max-w-[70%] flex-col text-fg">
                 {row.href ? (
                   <a
@@ -37,7 +37,7 @@ export default function ListSection({ title, rows }: Props) {
                   {row.subtitle}
                 </span>
               </div>
-              <span className="shrink-0 pt-0.5 text-right text-[14px] leading-[16px] text-fg opacity-40 2xl:text-[16px] 2xl:leading-[24px]">
+              <span className="shrink-0 text-right text-[14px] leading-[16px] text-fg opacity-40 2xl:text-[16px] 2xl:leading-[24px]">
                 {row.meta}
               </span>
             </div>
