@@ -71,11 +71,13 @@ export default function TopBar({ onSelect }: Props) {
         </div>
       </header>
 
-      {/* Full-screen menu — fades in/out */}
+      {/* Full-screen menu — fades in/out. Uses opacity + pointer-events (not
+          visibility) so the fade isn't skipped by the browser. */}
       <div
+        aria-hidden={!open}
         className={[
-          'fixed inset-0 z-40 bg-bg transition-[opacity,visibility] duration-300 ease-out',
-          open ? 'visible opacity-100' : 'invisible opacity-0',
+          'fixed inset-0 z-40 bg-bg transition-opacity duration-500 ease-out',
+          open ? 'opacity-100' : 'pointer-events-none opacity-0',
         ].join(' ')}
       >
         <nav className="absolute inset-0 flex flex-col items-center justify-center gap-4">
@@ -84,9 +86,9 @@ export default function TopBar({ onSelect }: Props) {
               key={s.id}
               type="button"
               onClick={() => go(s.id)}
-              style={{ transitionDelay: open ? `${120 + i * 70}ms` : '0ms' }}
+              style={{ transitionDelay: open ? `${150 + i * 90}ms` : '0ms' }}
               className={[
-                'text-[32px] leading-[40px] text-fg-80 transition-all duration-300 ease-out hover:text-fg',
+                'text-[32px] leading-[40px] text-fg-80 transition-all duration-500 ease-out hover:text-fg',
                 open ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0',
               ].join(' ')}
             >
