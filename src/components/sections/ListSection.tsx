@@ -10,7 +10,7 @@ type Props = {
  *  Community, Education all share this layout. */
 export default function ListSection({ title, rows }: Props) {
   return (
-    <section className="flex flex-col gap-8">
+    <section className="flex flex-col gap-6 md:gap-10 lg:gap-12 2xl:gap-16">
       <SectionHeading>{title}</SectionHeading>
 
       <ul className="flex flex-col">

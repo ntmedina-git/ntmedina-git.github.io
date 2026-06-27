@@ -4,14 +4,14 @@ import SectionHeading from './SectionHeading'
 /** Selected work — heading + 2×2 card grid (1 column on S). */
 export default function SelectedWork() {
   return (
-    <section id="work" className="flex flex-col gap-10 xl:gap-16">
+    <section id="work" className="flex flex-col gap-6 md:gap-10 lg:gap-12 2xl:gap-16">
       <SectionHeading pill="Coming soon">Selected work</SectionHeading>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:gap-6">
         {selectedWork.map((item) => (
           <article
             key={item.title}
-            className="flex min-h-[280px] flex-col justify-between rounded-xl border border-line p-8 xl:min-h-[426px] xl:p-12"
+            className="flex min-h-[327px] flex-col justify-between rounded-xl border border-line p-10 2xl:min-h-[426px] 2xl:p-12"
           >
             <img src={item.logo} alt={item.logoAlt} className={item.logoClass} />
 
