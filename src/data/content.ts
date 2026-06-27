@@ -37,7 +37,7 @@ export const hero = {
 export const intro = [
   'With over 10 years of experience across ux strategy, research, design systems and interaction design, my work is driven by a deep interest in the relationship between art, technology and the design of meaningful digital experiences.',
   "I've always believed that art, science, and technology go hand in hand. Artists and scientists show us that we shouldn't limit ourselves to what's already possible, we work with hypotheses in a world of constant change and uncertainty, we envision something that doesn't exist yet.",
-  'Curiosity and the desire to improve — even just a little — our own lives and the lives of others are my driving force and my greatest motivation as a designer, researcher, artist, and human being.',
+  'Curiosity and the desire to improve, even just a little, our own lives and the lives of others are my driving force and my greatest motivation as a designer, researcher, artist, and human being.',
 ]
 
 export const selectedWork = [
@@ -83,7 +83,7 @@ export const about = [
 export type ListRow = { title: string; subtitle: string; meta: string; href?: string }
 
 export const experience: ListRow[] = [
-  { title: 'Senior Product Designer', subtitle: 'Arco Educação', meta: '2023 – 2025' },
+  { title: 'Senior Product Designer', subtitle: 'Arco Educação', meta: '2023 – 2026' },
   { title: 'Senior Product Designer', subtitle: 'Work&Co', meta: '2020 – 2023' },
   { title: 'Product Designer', subtitle: 'VTEX', meta: '2017 – 2020' },
   { title: 'UX Designer', subtitle: 'Globo.com', meta: '2016 – 2017' },
