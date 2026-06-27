@@ -38,7 +38,7 @@ export default function App() {
         {/* XL / L navigation */}
         <Sidebar active={active} onSelect={handleSelect} />
 
-        <main className="flex-1 px-8 pb-36 pt-4 md:px-10 lg:px-0 lg:pb-24 lg:pt-16 lg:pr-12 xl:pr-20">
+        <main className="flex-1 px-8 pb-36 pt-4 md:px-10 lg:px-0 lg:pb-16 lg:pt-16 lg:pr-12 xl:pr-20">
           <div className="flex max-w-[1165px] flex-col gap-24 xl:gap-32">
             <Hero />
             <SelectedWork />
