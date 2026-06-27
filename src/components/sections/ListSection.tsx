@@ -13,11 +13,11 @@ export default function ListSection({ title, rows }: Props) {
     <section className="flex flex-col gap-6 md:gap-10 lg:gap-12 2xl:gap-16">
       <SectionHeading>{title}</SectionHeading>
 
-      <ul className="flex flex-col">
+      <ul className="flex flex-col gap-8">
         {rows.map((row, i) => (
-          <li key={`${row.title}-${i}`}>
+          <li key={`${row.title}-${i}`} className="flex flex-col gap-8">
             {i > 0 && <div className="h-px w-full bg-line" />}
-            <div className="group flex items-start justify-between gap-6 py-4">
+            <div className="group flex items-start justify-between gap-6">
               <div className="flex max-w-[70%] flex-col text-fg">
                 {row.href ? (
                   <a

@@ -15,7 +15,7 @@ type Props = {
  */
 export default function Sidebar({ active, onSelect }: Props) {
   return (
-    <aside className="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:w-[32%] xl:w-[36%] shrink-0 flex-col justify-between py-16 pl-12 pr-8 xl:pl-20">
+    <aside className="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:w-[35%] shrink-0 flex-col justify-between py-16 pl-16 pr-8 2xl:pl-20">
       <Identity />
       <SectionNav active={active} onSelect={onSelect} />
       <SocialLinks />

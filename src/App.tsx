@@ -38,16 +38,34 @@ export default function App() {
         {/* XL / L navigation */}
         <Sidebar active={active} onSelect={handleSelect} />
 
-        <main className="flex-1 px-8 pb-36 pt-4 md:px-10 lg:px-0 lg:pb-16 lg:pt-16 lg:pr-12 xl:pr-20">
-          <div className="flex max-w-[1165px] flex-col gap-24 xl:gap-32">
+        <main className="flex-1 px-8 pb-36 pt-4 md:px-10 lg:px-0 lg:pb-16 lg:pt-16 lg:pr-16 2xl:pr-20">
+          {/* Vertical rhythm follows the Figma frames: a larger "showcase" gap
+              after Hero and Selected work, a tighter gap between the list
+              sections. (showcase: S/M 128 · L 256 · XL 192;
+              list: S 80 · M/L 96 · XL 128) */}
+          <div className="flex max-w-[1165px] flex-col">
             <Hero />
-            <SelectedWork />
-            <About />
-            <ListSection title="Experience" rows={experience} />
-            <ListSection title="Articles" rows={articles} />
-            <ListSection title="Community" rows={community} />
-            <ListSection title="Education" rows={education} />
-            <Footer />
+            <div className="mt-32 lg:mt-64 2xl:mt-48">
+              <SelectedWork />
+            </div>
+            <div className="mt-32 lg:mt-64 2xl:mt-48">
+              <About />
+            </div>
+            <div className="mt-20 md:mt-24 2xl:mt-32">
+              <ListSection title="Experience" rows={experience} />
+            </div>
+            <div className="mt-20 md:mt-24 2xl:mt-32">
+              <ListSection title="Articles" rows={articles} />
+            </div>
+            <div className="mt-20 md:mt-24 2xl:mt-32">
+              <ListSection title="Community" rows={community} />
+            </div>
+            <div className="mt-20 md:mt-24 2xl:mt-32">
+              <ListSection title="Education" rows={education} />
+            </div>
+            <div className="mt-20 md:mt-24 2xl:mt-32">
+              <Footer />
+            </div>
           </div>
         </main>
       </div>
