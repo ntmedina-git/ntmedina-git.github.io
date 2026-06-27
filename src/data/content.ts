@@ -81,7 +81,7 @@ export const about =
 export type ListRow = { title: string; subtitle: string; meta: string; href?: string }
 
 export const experience: ListRow[] = [
-  { title: 'Senior Product Designer', subtitle: 'Mercado Livre', meta: '2026 – Current' },
+  { title: 'Product Designer', subtitle: 'Mercado Livre', meta: '2026 – Current' },
   { title: 'Senior Product Designer', subtitle: 'Arco Educação', meta: '2023 – 2025' },
   { title: 'Senior Product Designer', subtitle: 'Work&Co', meta: '2020 – 2023' },
   { title: 'Product Designer', subtitle: 'VTEX', meta: '2017 – 2020' },
