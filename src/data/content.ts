@@ -132,4 +132,4 @@ export const education: ListRow[] = [
   },
 ]
 
-export const footerText = "Feel free to send me a message, I'll love to connect."
+export const footerText = "Feel free to send me a message, I'd love to connect."
