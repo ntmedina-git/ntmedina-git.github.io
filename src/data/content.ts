@@ -13,7 +13,7 @@ export const social = [
 
 // The three scroll-driven nav indicators (XL / L sidebar).
 export const navSections = [
-  { id: 'home', label: 'Home' },
+  { id: 'home', label: 'Hello' },
   { id: 'work', label: 'Work' },
   { id: 'about', label: 'About' },
 ] as const
