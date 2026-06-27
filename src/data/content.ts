@@ -94,13 +94,13 @@ export const experience: ListRow[] = [
 export const articles: ListRow[] = [
   {
     title: 'Arco Educação uses GPT‑4 to improve teaching and learning in Brazil',
-    subtitle: 'Article | Arco & Open AI',
+    subtitle: 'Arco & Open AI',
     meta: '2025',
     href: 'https://openai.com/index/arco-education/',
   },
   {
     title: 'Papo de designer: observações de uma designer de produto digital',
-    subtitle: 'Article | UX Collective',
+    subtitle: 'UX Collective',
     meta: '2019',
     href: 'https://brasil.uxdesign.cc/papo-de-designer-observa%C3%A7%C3%B5es-de-uma-designer-de-produto-digital-7e2289dfe941',
   },
@@ -126,11 +126,11 @@ export const community: ListRow[] = [
 
 export const education: ListRow[] = [
   { title: 'Graphic Design', subtitle: 'IBMR', meta: '2026 – Current' },
-  { title: 'Design Visual Communication', subtitle: 'EBA – UFRJ', meta: '2013 – 2018 (Trancado)' },
+  { title: 'Design Visual Communication', subtitle: 'EBA – UFRJ', meta: '2013 – 2018' },
   {
-    title: 'Tecnologia da Informação',
+    title: 'Information Technology',
     subtitle: 'Instituto Superior de Tecnologia, Petrópolis',
-    meta: '2013 – 2013 (Trancado)',
+    meta: '2013 – 2013',
   },
 ]
 
