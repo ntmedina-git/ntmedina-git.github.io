@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useScrollAwayHeader } from '../hooks/useScrollAwayHeader'
 import { menuSections, type NavSectionId } from '../data/content'
 
 type Props = {
+  open: boolean
+  onOpenChange: (open: boolean) => void
   onSelect: (id: NavSectionId) => void
 }
 
@@ -12,8 +14,7 @@ type Props = {
  * section links (Work / About) centered on screen; the links rise and fade in
  * with a small stagger.
  */
-export default function TopBar({ onSelect }: Props) {
-  const [open, setOpen] = useState(false)
+export default function TopBar({ open, onOpenChange, onSelect }: Props) {
   const { ref, offset, animate } = useScrollAwayHeader<HTMLDivElement>()
 
   // Lock body scroll while the full-screen menu is open.
@@ -27,7 +28,7 @@ export default function TopBar({ onSelect }: Props) {
   }, [open])
 
   const go = (id: NavSectionId) => {
-    setOpen(false)
+    onOpenChange(false)
     onSelect(id)
   }
 
@@ -38,13 +39,13 @@ export default function TopBar({ onSelect }: Props) {
       <header
         style={{ transform: `translateY(-${open ? 0 : offset}px)` }}
         className={[
-          'top-0 z-50 bg-bg/80 backdrop-blur-sm',
+          'top-0 z-50',
           // Smooth only when revealing on scroll-up; no transition while it
           // tracks the scroll on the way down.
           animate && !open ? 'transition-transform duration-300 ease-out' : '',
-          // Pinned while the menu is open so the close button stays on screen
-          // even if the page was scrolled; scroll-aware sticky bar otherwise.
-          open ? 'fixed inset-x-0' : 'sticky',
+          // Open: pinned and transparent so it blends into the full-screen
+          // overlay. Closed: scroll-aware sticky bar with a blurred backdrop.
+          open ? 'fixed inset-x-0' : 'sticky bg-bg/80 backdrop-blur-sm',
         ].join(' ')}
       >
         <div ref={ref} className="flex items-start justify-end p-8 md:p-10">
@@ -52,7 +53,7 @@ export default function TopBar({ onSelect }: Props) {
             type="button"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => onOpenChange(!open)}
             className="relative mt-1 h-8 w-8 shrink-0"
           >
             <span

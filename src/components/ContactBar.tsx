@@ -2,14 +2,24 @@ import { social } from '../data/content'
 
 const [linkedin, github, email] = social
 
+type Props = {
+  /** Hidden (faded out) while the full-screen menu is open. */
+  hidden?: boolean
+}
+
 /**
  * Contact info pinned to the bottom of the viewport on M / S. A gradient fades
  * the scrolling content out beneath it so the links stay legible. Hidden on
  * lg+, where the sidebar already carries the social links.
  */
-export default function ContactBar() {
+export default function ContactBar({ hidden = false }: Props) {
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 lg:hidden">
+    <div
+      className={[
+        'pointer-events-none fixed inset-x-0 bottom-0 z-20 transition-opacity duration-300 lg:hidden',
+        hidden ? 'opacity-0' : 'opacity-100',
+      ].join(' ')}
+    >
       <div className="flex items-end bg-gradient-to-t from-bg from-50% via-bg/80 to-transparent pt-16">
         <div className="pointer-events-auto flex w-full items-center justify-between p-8 text-[14px] leading-[20px] md:px-10 md:py-6">
           <div className="flex gap-6">

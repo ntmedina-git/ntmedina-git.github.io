@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import ContactBar from './components/ContactBar'
@@ -21,6 +21,7 @@ const NAV_IDS = navSections.map((s) => s.id)
 
 export default function App() {
   const active = useActiveSection(NAV_IDS)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const handleSelect = useCallback((id: NavSectionId) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -29,10 +30,10 @@ export default function App() {
   return (
     <div className="min-h-screen">
       {/* M / S navigation */}
-      <TopBar onSelect={handleSelect} />
+      <TopBar open={menuOpen} onOpenChange={setMenuOpen} onSelect={handleSelect} />
 
-      {/* M / S fixed contact footer */}
-      <ContactBar />
+      {/* M / S fixed contact footer — hidden while the full-screen menu is open */}
+      <ContactBar hidden={menuOpen} />
 
       <div className="lg:flex">
         {/* XL / L navigation */}
