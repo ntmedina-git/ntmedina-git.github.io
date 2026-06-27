@@ -11,7 +11,7 @@ export default function ContactBar() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 lg:hidden">
       <div className="flex items-end bg-gradient-to-t from-bg from-50% via-bg/80 to-transparent pt-16">
-        <div className="pointer-events-auto flex w-full items-center justify-between p-8 text-[14px] leading-[20px]">
+        <div className="pointer-events-auto flex w-full items-center justify-between p-8 text-[14px] leading-[20px] md:px-10 md:py-6">
           <div className="flex gap-6">
             {[linkedin, github].map((link) => (
               <a
