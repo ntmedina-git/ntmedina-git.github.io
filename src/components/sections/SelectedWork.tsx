@@ -11,7 +11,7 @@ export default function SelectedWork() {
         {selectedWork.map((item) => (
           <article
             key={item.title}
-            className="flex min-h-[327px] flex-col justify-between rounded-xl border border-line p-6 md:p-10 2xl:min-h-[426px] 2xl:p-12"
+            className="flex min-h-[327px] flex-col justify-between rounded-xl border border-line p-8 md:p-10 2xl:min-h-[426px] 2xl:p-12"
           >
             <img src={item.logo} alt={item.logoAlt} className={item.logoClass} />
 
