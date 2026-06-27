@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Identity from './Identity'
+import { useHideOnScroll } from '../hooks/useHideOnScroll'
 import { menuSections, type NavSectionId } from '../data/content'
 
 type Props = {
@@ -13,6 +14,7 @@ type Props = {
  */
 export default function TopBar({ onSelect }: Props) {
   const [open, setOpen] = useState(false)
+  const hidden = useHideOnScroll()
 
   const go = (id: NavSectionId) => {
     setOpen(false)
@@ -22,8 +24,11 @@ export default function TopBar({ onSelect }: Props) {
   return (
     <header
       className={[
-        'lg:hidden sticky top-0 z-30 transition-colors',
+        'lg:hidden sticky top-0 z-30 transition-[transform,background-color] duration-300',
         open ? 'bg-bg' : 'bg-bg/80 backdrop-blur-sm',
+        // Slide out of the way when scrolling down; reappear on scroll up.
+        // Never hide while the menu is open.
+        hidden && !open ? '-translate-y-full' : 'translate-y-0',
       ].join(' ')}
     >
       <div className="flex items-start justify-between p-8 md:p-10">
