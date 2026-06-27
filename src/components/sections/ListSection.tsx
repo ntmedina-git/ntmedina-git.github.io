@@ -24,18 +24,20 @@ export default function ListSection({ title, rows }: Props) {
                     href={row.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[18px] leading-[28px] opacity-60 underline decoration-from-font underline-offset-2 transition-opacity hover:opacity-100 xl:text-[20px] xl:leading-[32px]"
+                    className="text-[16px] leading-[24px] opacity-60 underline decoration-from-font underline-offset-2 transition-opacity hover:opacity-100 2xl:text-[20px] 2xl:leading-[32px]"
                   >
                     {row.title}
                   </a>
                 ) : (
-                  <span className="text-[18px] leading-[28px] opacity-60 xl:text-[20px] xl:leading-[32px]">
+                  <span className="text-[16px] leading-[24px] opacity-60 2xl:text-[20px] 2xl:leading-[32px]">
                     {row.title}
                   </span>
                 )}
-                <span className="text-[16px] leading-[24px] opacity-40">{row.subtitle}</span>
+                <span className="text-[14px] leading-[16px] opacity-40 2xl:text-[16px] 2xl:leading-[24px]">
+                  {row.subtitle}
+                </span>
               </div>
-              <span className="shrink-0 pt-0.5 text-right text-[16px] leading-[24px] text-fg opacity-40">
+              <span className="shrink-0 pt-0.5 text-right text-[14px] leading-[16px] text-fg opacity-40 2xl:text-[16px] 2xl:leading-[24px]">
                 {row.meta}
               </span>
             </div>
