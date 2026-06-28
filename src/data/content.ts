@@ -35,7 +35,7 @@ export const hero = {
 }
 
 export const intro = [
-  'With over 10 years of experience across ux strategy, research, design systems and interaction design, my work is driven by a deep interest in the relationship between art, technology and the design of meaningful digital experiences.',
+  'With over 10 years of experience across UX strategy, research, design systems and interaction design, my work is driven by a deep interest in the relationship between art, technology and the design of meaningful digital experiences.',
   "I've always believed that art, science, and technology go hand in hand. Artists and scientists show us that we shouldn't limit ourselves to what's already possible, we work with hypotheses in a world of constant change and uncertainty, we envision something that doesn't exist yet.",
   'Curiosity and the desire to improve, even just a little, our own lives and the lives of others are my driving force and my greatest motivation as a designer, researcher, artist, and human being.',
 ]
