@@ -110,7 +110,7 @@ export const articles: ListRow[] = [
 export const community: ListRow[] = [
   { title: 'Hacking Rio', subtitle: 'UX Mentor', meta: '2018' },
   {
-    title: 'Designing for developers, developing for designers',
+    title: 'Designing for Developers, Developing for Designers',
     subtitle: 'Speaker | Brazil JS Conference',
     meta: '2018',
   },
