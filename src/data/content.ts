@@ -116,7 +116,7 @@ export const community: ListRow[] = [
   },
   { title: 'Shell Iniciativa Jovem', subtitle: 'UX Mentor', meta: '2018' },
   {
-    title: 'Visualizando dados',
+    title: 'Visualizing Data',
     subtitle: 'Speaker | 2º Meetup R Ladies Rio',
     meta: '2017',
     href: 'https://www.slideshare.net/slideshow/visualizando-dados-2-meetup-r-ladies-rio/80292380',
