@@ -30,7 +30,7 @@ export const hero = {
   lead: "Hello, I'm ",
   name: 'Natália Medina',
   line2a: 'a brazilian Senior Product ',
-  underline: 'designer',
+  underline: 'Designer',
   line2b: ' based in Rio.',
 }
 
