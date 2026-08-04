@@ -39,13 +39,16 @@ export default function TopBar({ open, onOpenChange, onSelect }: Props) {
       <header
         style={{ transform: `translateY(-${open ? 0 : offset}px)` }}
         className={[
-          'top-0 z-50',
+          // Always sticky: staying in the normal flow means opening the menu
+          // doesn't remove the header's reserved space, so the section text
+          // below never jumps up. (Switching to `fixed` used to cause that.)
+          'sticky top-0 z-50',
           // Smooth only when revealing on scroll-up; no transition while it
           // tracks the scroll on the way down.
           animate && !open ? 'transition-transform duration-300 ease-out' : '',
-          // Open: pinned and transparent so it blends into the full-screen
-          // overlay. Closed: scroll-aware sticky bar with a blurred backdrop.
-          open ? 'fixed inset-x-0' : 'sticky bg-bg/80 backdrop-blur-sm',
+          // Open: transparent so it blends into the full-screen overlay.
+          // Closed: blurred backdrop.
+          open ? '' : 'bg-bg/80 backdrop-blur-sm',
         ].join(' ')}
       >
         <div ref={ref} className="flex items-start justify-end p-8 md:p-10">
