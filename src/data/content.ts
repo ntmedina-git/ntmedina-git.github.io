@@ -47,7 +47,7 @@ export const selectedWork = [
     logoClass: 'h-8 w-[58px]',
     title: 'Content library',
     company: 'Arco Educação, 2025/2026',
-    note: 'Redesign – Evolution',
+    note: 'Web | Redesign',
   },
   {
     logo: '/assets/intelligent.svg',
@@ -55,7 +55,7 @@ export const selectedWork = [
     logoClass: 'h-12 w-[197px]',
     title: 'Inteligent assistant',
     company: 'Arco Educação & Open AI, 2024',
-    note: 'Evolution',
+    note: 'Web',
   },
   {
     logo: '/assets/itau.svg',
