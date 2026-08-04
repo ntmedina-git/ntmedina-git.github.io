@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import Reveal from './components/Reveal'
 import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import ContactBar from './components/ContactBar'
@@ -45,28 +46,30 @@ export default function App() {
               sections. (showcase: S/M 128 · L 256 · XL 192;
               list: S 80 · M/L 96 · XL 128) */}
           <div className="flex max-w-[1165px] flex-col">
-            <Hero />
-            <div className="mt-32 lg:mt-64 2xl:mt-48">
+            <Reveal>
+              <Hero />
+            </Reveal>
+            <Reveal className="mt-32 lg:mt-64 2xl:mt-48">
               <SelectedWork />
-            </div>
-            <div className="mt-32 lg:mt-64 2xl:mt-48">
+            </Reveal>
+            <Reveal className="mt-32 lg:mt-64 2xl:mt-48">
               <About />
-            </div>
-            <div className="mt-20 md:mt-24 2xl:mt-32">
+            </Reveal>
+            <Reveal className="mt-20 md:mt-24 2xl:mt-32">
               <ListSection title="Experience" rows={experience} />
-            </div>
-            <div className="mt-20 md:mt-24 2xl:mt-32">
+            </Reveal>
+            <Reveal className="mt-20 md:mt-24 2xl:mt-32">
               <ListSection title="Articles" rows={articles} />
-            </div>
-            <div className="mt-20 md:mt-24 2xl:mt-32">
+            </Reveal>
+            <Reveal className="mt-20 md:mt-24 2xl:mt-32">
               <ListSection title="Community" rows={community} />
-            </div>
-            <div className="mt-20 md:mt-24 2xl:mt-32">
+            </Reveal>
+            <Reveal className="mt-20 md:mt-24 2xl:mt-32">
               <ListSection title="Education" rows={education} />
-            </div>
-            <div className="mt-20 md:mt-24 2xl:mt-32">
+            </Reveal>
+            <Reveal className="mt-20 md:mt-24 2xl:mt-32">
               <Footer />
-            </div>
+            </Reveal>
           </div>
         </main>
       </div>
