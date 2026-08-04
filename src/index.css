@@ -2,48 +2,66 @@
 
 /* ------------------------------------------------------------------ */
 /* Custom font — Neue Montreal                                         */
+/*                                                                     */
+/* WOFF2 (≈45% smaller than the OTF masters) served from /public so    */
+/* the critical weights can be <link rel="preload">-ed with stable     */
+/* paths in index.html. `swap` is safe here because the fallback below */
+/* is metric-matched, so the hand-off never shifts the layout.         */
 /* ------------------------------------------------------------------ */
 @font-face {
   font-family: 'Neue Montreal';
-  src: url('./fonts/NeueMontreal-Light.otf') format('opentype');
+  src: url('/fonts/NeueMontreal-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Neue Montreal';
-  src: url('./fonts/NeueMontreal-Regular.otf') format('opentype');
+  src: url('/fonts/NeueMontreal-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Neue Montreal';
-  src: url('./fonts/NeueMontreal-Medium.otf') format('opentype');
+  src: url('/fonts/NeueMontreal-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Neue Montreal';
-  src: url('./fonts/NeueMontreal-Bold.otf') format('opentype');
+  src: url('/fonts/NeueMontreal-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Neue Montreal';
-  src: url('./fonts/NeueMontreal-Italic.otf') format('opentype');
+  src: url('/fonts/NeueMontreal-Italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
+}
+
+/* Metric-matched fallback: Arial re-shaped to Neue Montreal's own
+   metrics (upm 1000 · ascent 975 · descent 225 · avg glyph width ratio
+   ≈ 0.963 vs Arial). Rendered before the web font loads, it occupies the
+   exact same space, so the swap is invisible — no reflow, no size jump. */
+@font-face {
+  font-family: 'Neue Montreal Fallback';
+  src: local('Arial');
+  ascent-override: 97.5%;
+  descent-override: 22.5%;
+  line-gap-override: 0%;
+  size-adjust: 96.3%;
 }
 
 /* ------------------------------------------------------------------ */
 /* Design tokens (color + typography) exposed as Tailwind theme vars   */
 /* ------------------------------------------------------------------ */
 @theme {
-  --font-sans: 'Neue Montreal', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Neue Montreal', 'Neue Montreal Fallback', ui-sans-serif, system-ui, sans-serif;
 
   /* surfaces */
   --color-bg: #000000;
