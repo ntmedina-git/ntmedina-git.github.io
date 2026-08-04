@@ -55,7 +55,7 @@ export const selectedWork = [
     logoClass: 'h-12 w-[197px]',
     title: 'Inteligent assistant',
     company: 'Arco Educação & Open AI, 2024',
-    note: '0 > 1',
+    note: 'Evolution',
   },
   {
     logo: '/assets/itau.svg',
@@ -63,7 +63,7 @@ export const selectedWork = [
     logoClass: 'h-8 w-[39px]',
     title: 'Íon | Itaú Investimentos',
     company: 'Work & Co, 2020/2021',
-    note: '0 > 1',
+    note: 'Mobile App',
   },
   {
     logo: '/assets/dotz.svg',
@@ -71,7 +71,7 @@ export const selectedWork = [
     logoClass: 'h-[18px] w-[56px]',
     title: 'Conta Digital Dotz',
     company: 'Work & Co, 2021',
-    note: '0 > 1',
+    note: 'Mobile App',
   },
 ]
 
