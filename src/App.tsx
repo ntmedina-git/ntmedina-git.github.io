@@ -40,7 +40,7 @@ export default function App() {
         {/* XL / L navigation */}
         <Sidebar active={active} onSelect={handleSelect} />
 
-        <main className="flex-1 px-8 pb-36 pt-4 md:px-10 lg:px-0 lg:pb-16 lg:pt-64 lg:pr-16 2xl:pr-20 2xl:pt-16">
+        <main className="flex-1 px-8 pb-36 pt-4 md:px-10 lg:px-0 lg:pb-16 lg:pt-48 lg:pr-16 2xl:pr-20">
           {/* Vertical rhythm follows the Figma frames: a larger "showcase" gap
               after Hero and Selected work, a tighter gap between the list
               sections. (showcase: S/M 128 · L 256 · XL 192;
