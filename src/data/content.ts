@@ -63,7 +63,7 @@ export const selectedWork = [
     logoClass: 'h-8 w-[39px]',
     title: 'Íon | Itaú Investimentos',
     company: 'Work & Co, 2020/2021',
-    note: 'Mobile App',
+    note: 'Web & Mobile App',
   },
   {
     logo: '/assets/dotz.svg',
